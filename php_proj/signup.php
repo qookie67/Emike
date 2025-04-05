@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $fullname, $email, $hashed_password, $status);
 
     if ($stmt->execute()) {
-        echo "✅ Registration successful!";
+        echo "Registration successful!";
     } else {
         echo "Error: " . $stmt->error;
     }
