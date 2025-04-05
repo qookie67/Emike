@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            min-height: 100vh; 
+            justify-content: flex-start;
+        }
+        
+        .dashboard-container {
+            display: flex;
+            flex-direction: row; 
+            gap: 20px; 
+            margin-top: 40px;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            width: 280px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container submit{
+            color: #222;
+        }
+
+        .container h3 {
+            text-align: center;
+        }
+
+        .container form input[type="text"],
+        .container form input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .books {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 50px; 
+        }
+
+        .books a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .books a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Teacher Dashboard</h1>
+
+    <div class="dashboard-container">
+        <div class="container">
+            <h3>Add book</h3>
+            <form action="add-book.php" class="info" method="post">
+                <label for="">Book title</label>
+                <input type="text" name="title" /><br />
+                <label for="date">Date</label>
+                <input type="text" name="date"><br/>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+
+        <div class="container">
+            <h3>Assign book</h3>
+            <form action="assign-book.php" class="info" method="post">
+                <label for="">Book title</label>
+                <input type="text" name="title" /><br />
+                <label for="">Student username</label>
+                <input type="text" name="username" /><br />
+                <input type="submit" value="Submit" id="submit"/>
+            </form>
+        </div>
+    </div>
+
+    <div class="books">
+        <a href="#">All Books</a>
+        <a href="#">All Assign Books</a>
+    </div>
+</body>
+</html>
