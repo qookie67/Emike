@@ -1,11 +1,11 @@
 <?php
-include __DIR__ . "/database.php"; // database connection
+include __DIR__ . "/database.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Query to get user
+    
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -13,16 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = $stmt->get_result();
 
-    // If user is found
+    
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        // Verify the password
+        
         if (password_verify($password, $user['password'])) {
-            echo "✅ Login successful! Welcome, " . $user['fullname'];
-            // You can redirect to a dashboard page like this:
-            // header("Location: dashboard.php");
-            // exit();
+            echo "Login successful! Welcome, " . $user['fullname'];
+            
         } else {
             echo "Incorrect password!";
         }
