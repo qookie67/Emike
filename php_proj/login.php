@@ -1,4 +1,5 @@
 <?php
+//di pa tapos
 include __DIR__ . "/database.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
