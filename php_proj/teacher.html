@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+</head>
+<body>
+
+    <h1>Teacher Dashboard</h1>
+
+    <!-- Add a Book -->
+    <h2>Add a Book</h2>
+    <form>
+        <label>Book Title:</label><br>
+        <input type="text" name="book_title"><br><br>
+
+        <label>Author:</label><br>
+        <input type="text" name="book_author"><br><br>
+
+        <button type="submit">Add Book</button>
+    </form>
+
+    <hr>
+
+    <!-- Assign a Book -->
+    <h2>Assign a Book</h2>
+    <form>
+        <label>Select Book:</label><br>
+        <select name="book">
+        <option>Book A</option>
+        <option>Book B</option>
+        </select><br><br>
+
+        <label>Select Student:</label><br>
+        <select name="student">
+        <option>Student 1</option>
+        <option>Student 2</option>
+        </select><br><br>
+
+        <button type="submit">Assign Book</button>
+    </form>
+
+    <hr>
+
+    <!-- See All Books -->
+    <h2>All Books</h2>
+    <ul>
+        <li>Book A by Author A</li>
+        <li>Book B by Author B</li>
+    </ul>
+
+    <hr>
+
+    <!-- See Assigned Books -->
+    <h2>Assigned Books</h2>
+    <ul>
+        <li>Book A - Assigned to Student 1</li>
+        <li>Book B - Assigned to Student 2</li>
+    </ul>
+
+</body>
+</html>
