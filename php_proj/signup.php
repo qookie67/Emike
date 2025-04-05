@@ -1,4 +1,5 @@
 <?php
+//di pa tapos
 include("database.php"); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
