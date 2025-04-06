@@ -27,9 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             
             if ($role == 'teacher') {
-                header("Location: teacher.html");
+                header("Location: teacher.php");
             } else if ($role == 'student') {
-                header("Location: student.html");
+                header("Location: student.php");
             } 
             exit();
         } else {
