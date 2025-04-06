@@ -1,5 +1,4 @@
 <?php
-//di pa tapos
 include("database.php"); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,12 +16,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+    
     $sql = "INSERT INTO users (fullname, email, password, role) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+    }
+
     $stmt->bind_param("ssss", $fullname, $email, $hashed_password, $status);
 
+    
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        
+        if ($status == "teacher") {
+            header("Location: teacher.html");
+        } else if ($status == "student") {
+            header("Location: student.html");
+        }
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
