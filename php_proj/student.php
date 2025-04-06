@@ -7,7 +7,7 @@ $student_name = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $student_name = $_POST['student_name'];
 
-    $stmt = $conn->prepare("SELECT book_title, assign_date FROM assigned_books WHERE student_name = ?");
+    $stmt = $conn->prepare("SELECT book_title, assign_date FROM assigned_books WHERE username = ?");
     $stmt->bind_param("s", $student_name);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>My Assigned Books</title>
+    <p>Back to <a href="login.html">Login</a></p>
     <style>
         body {
             font-family: Arial, sans-serif;
