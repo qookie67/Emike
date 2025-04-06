@@ -36,7 +36,7 @@ $result = $conn->query($sql);
 </head>
 <body>
     <h1>Books Added by Teachers</h1>
-    <p>Back to <a href="teacher.html">Teacher Dashboard</a></p>
+    <p>Back to <a href="teacher.php">Teacher Dashboard</a></p>
     <table>
         <thead>
             <tr>
