@@ -14,5 +14,5 @@
         }
     }
 
-    header("Location: teacher.html");
+    header("Location: teacher.php");
 ?>
