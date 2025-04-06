@@ -1,18 +1,25 @@
-<?php 
-    $conn = mysqli_connect("localhost", "root", "", "user_login");    
+<?php
+// No spaces or echo before this block
 
-    $book_title = $_POST["title"];
-    $date_added = $_POST["date"];
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    if($book_title != "" && $book_description != ""){
-        $query = "INSERT INTO `add-books` (title, description, cover_image) VALUES ('$book_title', '$book_description', '$book_cover')";
+include 'database.php';
 
-        try{
-            mysqli_query($conn, $query);
-        }catch(Exception $e){
-            echo $e;
-        }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST['title'];
+    $date = $_POST['date'];
+
+    $sql = "INSERT INTO `add-books` (title, date) VALUES ('$title', '$date')";
+
+    if ($conn->query($sql) === TRUE) {
+        header("Location: teacher.php");
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+}
 
-    header("Location: teacher.php");
+$conn->close();
 ?>
