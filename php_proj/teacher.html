@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+    <title>Teacher Dashboard</title>
     <style>
         body {
             display: flex;
             flex-direction: column;
-            align-items: center; 
-            min-height: 100vh; 
+            align-items: center;
+            min-height: 100vh;
             justify-content: flex-start;
         }
-        
+
         .dashboard-container {
             display: flex;
-            flex-direction: row; 
-            gap: 20px; 
+            flex-direction: row;
+            gap: 20px;
             margin-top: 40px;
         }
-        
+
         .container {
             background-color: #fff;
             padding: 20px;
@@ -30,21 +30,23 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .container submit{
-            color: #222;
-        }
-
         .container h3 {
             text-align: center;
         }
 
         .container form input[type="text"],
-        .container form input[type="submit"] {
+        .container form input[type="submit"],
+        .container form select {
             width: 100%;
             padding: 8px;
             margin: 8px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
+        }
+
+        .container form select {
+            width: 100%; 
+            padding: 8px; 
         }
 
         .books {
@@ -54,7 +56,7 @@
             width: 300px;
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 50px; 
+            margin-top: 50px;
         }
 
         .books a {
@@ -68,6 +70,7 @@
         .books a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 
@@ -79,28 +82,44 @@
             <h3>Add book</h3>
             <form action="add-book.php" class="info" method="post">
                 <label for="">Book title</label>
-                <input type="text" name="title" /><br />
+                <input type="text" name="title" required/>
                 <label for="date">Date</label>
-                <input type="text" name="date"><br/>
+                <input type="date" name="date" required>
                 <input type="submit" value="Submit" />
             </form>
         </div>
 
         <div class="container">
             <h3>Assign book</h3>
-            <form action="assign-book.php" class="info" method="post">
+            <form action="assign-books.php" class="info" method="post">
                 <label for="">Book title</label>
-                <input type="text" name="title" /><br />
-                <label for="">Student username</label>
-                <input type="text" name="username" /><br />
+                <select name="book_title" id="book_title" required>
+                <?php
+                include("database.php");
+
+                $sql = "SELECT title FROM `add-books`";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['title'] . "'>" . $row['title'] . "</option>";
+                    }
+                } else {
+                    echo "<option value='No books available'></option>";
+                }
+                ?>
+                </select>
+                <label for="username">Full Name</label>
+                <input type="text" name="username" required/>
                 <input type="submit" value="Submit" id="submit"/>
             </form>
         </div>
     </div>
 
     <div class="books">
-        <a href="#">All Books</a>
-        <a href="#">All Assign Books</a>
+        <a href="all-books.php">All Books</a>
+        <a href="assigned-books.php">All Assign Books</a>
     </div>
+    <p>Back to <a href="login.html">Login</a></p>
 </body>
 </html>
